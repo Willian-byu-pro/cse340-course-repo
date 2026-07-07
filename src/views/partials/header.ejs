@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= title %> — a directory of partner organizations and service projects.">
     <title><%= title %></title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/organizations">Organizations</a></li>
-            <li><a href="/projects">Projects</a></li>
-        </ul>
-    </nav>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/">Partner<span>Hub</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="/" <% if (currentPage === 'home') { %>aria-current="page"<% } %>>Home</a></li>
+                    <li><a href="/organizations" <% if (currentPage === 'organizations') { %>aria-current="page"<% } %>>Organizations</a></li>
+                    <li><a href="/projects" <% if (currentPage === 'projects') { %>aria-current="page"<% } %>>Projects</a></li>
+                    <li><a href="/categories" <% if (currentPage === 'categories') { %>aria-current="page"<% } %>>Categories</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">

@@ -28,22 +28,28 @@ app.set('views', path.join(__dirname, 'src/views'));
 
 /**
  * Routes
+ * currentPage is passed to every view so header.ejs can highlight
+ * the active link in the navigation (aria-current="page").
  */
 app.get('/', async (req, res) => {
     const title = 'Home';
-    res.render('home', { title });
+    res.render('home', { title, currentPage: 'home' });
 });
 
 app.get('/organizations', async (req, res) => {
     const title = 'Our Partner Organizations';
-    res.render('organizations', { title });
+    res.render('organizations', { title, currentPage: 'organizations' });
 });
 
 app.get('/projects', async (req, res) => {
     const title = 'Service Projects';
-    res.render('projects', { title });
+    res.render('projects', { title, currentPage: 'projects' });
 });
 
+app.get('/categories', async (req, res) => {
+    const title = 'Categories';
+    res.render('categories', { title, currentPage: 'categories' });
+});
 
 
 
@@ -51,6 +57,3 @@ app.listen(PORT, () => {
   console.log(`Server is running at http://127.0.0.1:${PORT}`);
   console.log(`Environment: ${NODE_ENV}`);
 });
-
-
-
