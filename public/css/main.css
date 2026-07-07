@@ -506,13 +506,16 @@ th {
   padding-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: #8FA0A1;
+  text-align: center;
 }
+
+.footer-bottom .divider { color: rgba(143, 160, 161, 0.5); }
 
 /* ==========================================================================
    GENERAL RESPONSIVE
