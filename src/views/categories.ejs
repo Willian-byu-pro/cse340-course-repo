@@ -1,11 +1,11 @@
 <%- include('partials/header') %>
 <main>
-    <h1><%= title %></h1>
-        <p>Ambiental</p>
-        <p>Educacional</p>
-        <p>Serviço comunitário</p>
-        <p>Saúde e bem-estar</p>
-
-        <img class="main-logo" src="images/cse340-service-network.png" alt="CSE 340 Service Network Logo"></p>
+        <h1><%= title %></h1>
+        <h2>Categories</h2>
+        <ul>
+            <% categories.forEach(category => { %>
+                <li><strong><%= category.name %></strong></li>
+            <% }); %>
+        </ul>
 </main>
 <%- include('partials/footer') %>

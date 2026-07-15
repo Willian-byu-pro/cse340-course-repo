@@ -67,3 +67,53 @@ VALUES
     (3, 'Clothing Donation Drive', 'Collecting and sorting winter clothing donations for families in need.', 'Contagem, MG', '2026-09-01'),
     (3, 'Blood Donation Campaign', 'Partnering with local hospitals to organize a community blood drive.', 'Belo Horizonte, MG', '2026-09-15'),
     (3, 'Neighborhood Cleanup Day', 'Mobilizing volunteers to clean up litter in public parks and streets.', 'Ibirité, MG', '2026-09-29');
+
+
+-- category clasification --
+
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE project_category (
+    project_id INTEGER NOT NULL REFERENCES service_project(project_id) ON DELETE CASCADE,
+    category_id INTEGER NOT NULL REFERENCES category(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, category_id)
+);
+
+-- popula category --
+
+INSERT INTO category (name)
+VALUES
+    ('Construction & Infrastructure'),
+    ('Environment & Sustainability'),
+    ('Community Support');
+
+-- popula project_category --
+
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    -- BrightFuture Builders -> Construction & Infrastructure (category_id = 1)
+    (1, 1),  -- Community Center Renovation
+    (2, 1),  -- Playground Construction
+    (3, 1),  -- Wheelchair Ramp Installation
+    (4, 1),  -- Solar Panel Installation
+    (4, 2),  -- também é sustentabilidade (energia solar)
+    (5, 1),  -- Bridge Repair Initiative
+
+    -- GreenHarvest Growers -> Environment & Sustainability (category_id = 2)
+    (6, 2),  -- Urban Garden Expansion
+    (7, 2),  -- Composting Workshop
+    (8, 2),  -- School Vegetable Garden
+    (8, 3),  -- também é apoio comunitário (escola)
+    (9, 2),  -- Seed Bank Launch
+    (10, 2), -- Farmers Market Setup
+    (10, 3), -- também é comunidade (mercado local)
+
+    -- UnityServe Volunteers -> Community Support (category_id = 3)
+    (11, 3), -- Food Drive Coordination
+    (12, 3), -- Senior Citizen Companionship Program
+    (13, 3), -- Clothing Donation Drive
+    (14, 3), -- Blood Donation Campaign
+    (15, 3); -- Neighborhood Cleanup Day
