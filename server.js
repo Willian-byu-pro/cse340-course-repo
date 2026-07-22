@@ -3,8 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
 import { getAllOrganizations } from './src/models/organizations.js';
-import { getAllProjects } from './src/models/project.js';
-import { getAllCategory } from './src/models/category.js';
+import { getAllCategories } from './src/models/categories.js';
 import router from './src/routes.js';
 
 
@@ -71,14 +70,8 @@ app.get('/', async (req, res) => {
 
 
 
-app.get('/projects', async (req, res) => {
-    const projects = await getAllProjects();
-    const title = 'Service Projects';
-    res.render('projects', { title, projects, currentPage: 'projects' });
-});
-
 app.get('/categories', async (req, res) => {
-    const categories = await getAllCategory()
+    const categories = await getAllCategories()
     const title = 'Categories';
     res.render('categories', { title, categories, currentPage: 'categories' });
 });
